@@ -1,0 +1,117 @@
+/* Fonts loaded via index.html */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 27 96% 61%;
+    --secondary-foreground: 0 0% 100%;
+    --background: 210 40% 98%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+    --accent: 217 91% 95%;
+    --accent-foreground: 217 91% 40%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --success: 142 76% 30%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 40%;
+    --warning-foreground: 0 0% 100%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 217 91% 60%;
+    --radius: 0.75rem;
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 222 47% 11%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 217 91% 95%;
+    --sidebar-accent-foreground: 217 91% 40%;
+    --sidebar-border: 214 32% 91%;
+    --sidebar-ring: 217 91% 60%;
+    --whatsapp: 142 70% 40%;
+    --whatsapp-foreground: 0 0% 100%;
+    --trial: 38 92% 40%;
+    --regular: 142 76% 30%;
+  }
+
+  .dark {
+    --background: 222 47% 5%;
+    --foreground: 210 40% 98%;
+    --card: 222 47% 8%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 47% 8%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 27 96% 61%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 217 33% 17%;
+    --accent-foreground: 217 91% 70%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 0 0% 100%;
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 217 91% 60%;
+    --sidebar-background: 222 47% 8%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 217 33% 17%;
+    --sidebar-accent-foreground: 217 91% 70%;
+    --sidebar-border: 217 33% 17%;
+    --sidebar-ring: 217 91% 60%;
+  }
+
+  * { @apply border-border; }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Cairo', 'Inter', system-ui, sans-serif;
+    direction: rtl;
+    text-align: right;
+    line-height: 1.8;
+  }
+  [lang="en"], .ltr { direction: ltr; text-align: left; font-family: 'Inter', system-ui, sans-serif; line-height: 1.6; }
+}
+
+@layer components {
+  .card-hover { @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1; }
+  .glass { @apply bg-card/80 backdrop-blur-md border border-border/50; }
+  .gradient-primary { background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(217 91% 50%) 100%); }
+  .gradient-hero { background: linear-gradient(135deg, hsl(217 91% 95%) 0%, hsl(var(--background)) 100%); }
+  .btn-whatsapp { @apply bg-[hsl(var(--whatsapp))] text-white hover:bg-[hsl(142_70%_42%)]; }
+  .badge-trial { @apply bg-[hsl(var(--warning))]/10 text-[hsl(var(--warning))] border border-[hsl(var(--warning))]/20; }
+  .badge-regular { @apply bg-[hsl(var(--success))]/10 text-[hsl(var(--success))] border border-[hsl(var(--success))]/20; }
+  .focus-ring { @apply focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background; }
+}
+
+@layer utilities {
+  .touch-target { @apply min-h-[44px] min-w-[44px]; }
+  @media (max-width: 768px) { .touch-target { @apply min-h-[48px] min-w-[48px]; } }
+  .text-balance { text-wrap: balance; }
+  .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  .hide-scrollbar::-webkit-scrollbar { display: none; }
+}
+
+/* Animations - reduced for performance */
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+.animate-fade-in { animation: fadeIn 0.4s ease-out forwards; }
+.animate-slide-in-right { animation: slideInRight 0.4s ease-out forwards; }
+.animate-slide-in-left { animation: slideInLeft 0.4s ease-out forwards; }
+.animate-float { animation: float 3s ease-in-out infinite; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes slideInRight { from { opacity: 0; transform: translateX(24px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes slideInLeft { from { opacity: 0; transform: translateX(-24px); } to { opacity: 1; transform: translateX(0); } }
