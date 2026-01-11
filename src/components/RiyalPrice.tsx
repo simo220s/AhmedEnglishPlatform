@@ -1,7 +1,7 @@
 /**
  * RiyalPrice Component
  * Displays prices in Saudi Riyals with the official Riyal symbol
- * 
+ *
  * Following Official Saudi Riyal Symbol Guidelines:
  * 1. Position: Symbol on the LEFT of numeral (appears RIGHT in RTL)
  * 2. Spacing: Required space between symbol and numeral
@@ -17,13 +17,9 @@ interface RiyalPriceProps {
   showSymbol?: boolean
 }
 
-export function RiyalPrice({
-  amount,
-  className = '',
-  showSymbol = true
-}: RiyalPriceProps) {
+export function RiyalPrice({ amount, className = "", showSymbol = true }: RiyalPriceProps) {
   // Format number with Arabic locale
-  const formattedNumber = new Intl.NumberFormat('ar-SA').format(amount)
+  const formattedNumber = new Intl.NumberFormat("ar-SA").format(amount)
 
   if (!showSymbol) {
     return <span className={className}>{formattedNumber}</span>
@@ -37,17 +33,34 @@ export function RiyalPrice({
   return (
     <span className={`inline-flex items-baseline ${className}`} dir="rtl">
       <span>{formattedNumber}</span>
-      <span
-        className="icon-saudi_riyal ms-1"
-        style={{
-          color: 'inherit',
-          fontSize: 'inherit',
-          fontWeight: 'normal',
-          lineHeight: 'inherit'
-        }}
-        role="img"
-        aria-label="ريال سعودي"
-      ></span>
+      <span className="ms-1 inline-flex items-center">
+        {/* Icon font version - will display if loaded */}
+        <span
+          className="icon-saudi_riyal"
+          style={{
+            color: "inherit",
+            fontSize: "inherit",
+            fontWeight: "normal",
+            lineHeight: "inherit",
+          }}
+          role="img"
+          aria-label="ريال سعودي"
+        ></span>
+        {/* Text fallback - displays if icon font fails */}
+        <span
+          className="[.icon-saudi_riyal:not(:empty)_+_&]:hidden"
+          style={{
+            color: "inherit",
+            fontSize: "inherit",
+            fontWeight: "normal",
+            lineHeight: "inherit",
+          }}
+          role="img"
+          aria-label="ريال سعودي"
+        >
+          ر.س
+        </span>
+      </span>
     </span>
   )
 }
